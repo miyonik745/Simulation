@@ -1,0 +1,21 @@
+body {
+    background: white;
+}
+
+.mainBody{
+    margin:0px;
+    padding:0px;
+}
+
+.display{
+    border: 4px solid
+}
+
+.map{
+    border: 4px solid
+}
+
+.nav{
+    background-color: black;
+    color: white
+}

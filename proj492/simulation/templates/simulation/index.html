@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+{# Load the tag library #}
+{% load bootstrap5 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'simulation/index.css' %}">
+
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proj492</title>
+   
+    <div class="row nav" style="width:1757px">
+        <h2>Simulation</h2>
+    </div>
+    <div class="container mainBody">
+        <div class="row map" style="background:blue;width:1757px;height:600px;">
+            <h1>Map</h1>
+        </div>
+        <div class="row" style  = "display:flex;justify-content: center; width:1757px;height:209px; ">
+            <div class="col display">
+                <h2>Display1</h2>
+            </div>
+            <div class="col display">
+                <h2>Display2</h2>
+            </div>
+            <div class="col display" >
+                <h2>Display3</h2>
+            </div>
+            
+        </div>
+        
+
+
+    </div>
+    
+</head>
+<body>
+    
+</body>
+</html>
