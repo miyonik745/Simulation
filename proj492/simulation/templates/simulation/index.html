@@ -65,99 +65,122 @@
 
 
 <script>
-
-
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
 
     mapboxgl.accessToken =
         'pk.eyJ1Ijoib25kZXJwZWhsaXZhbiIsImEiOiJja3dmY3M4bzUwZGhjMndydXg5MjNtbDczIn0.IUrPfId24D71j_cwM_9PdQ';
+
+    
     const map = new mapboxgl.Map({
 
         container: 'map', // container ID
         style: 'mapbox://styles/onderpehlivan/ckwp96xek2h2214t5xfyjxcce', // style URL
         center: [-94.88, 29.62], // starting position [lng, lat]
-        zoom: 9 // starting zoom
+        zoom: 9, // starting zoom
+        fadeDuration: 3000
     });
 
 
-
-
-    map.on('load', async () => {
-        // Add an image to use as a custom marker
-
-        for (let i = 0; i < 100; i++) {
-
-            let j  = i/1000
-
-            console.log('deneme')
-        map.addSource('points' + j, {
-            'type': 'geojson',
-            'data': {
+    
+    function animate(long,lat) {
+            return {
                 'type': 'FeatureCollection',
-                'features': [{
-                        // feature for Mapbox DC
-                        'type': 'Feature',
-                        'geometry': {
-                            'type': 'Point',
-                            'coordinates': [
-                                -94.88 + j, 29.62 + j
-                            ]
-                        },
-                        'properties': {
-                            'title': '.'
-                        }
-                    },
+                'features': [
                     {
                         // feature for Mapbox SF
                         'type': 'Feature',
                         'geometry': {
                             'type': 'Point',
-                            'coordinates': [-94.86 + j, 29.62 +j]
+                            'coordinates': [long +0.1, lat + 0,1]
                         },
                         'properties': {
                             'title': '*'
                         }
                     }
                 ]
-            }
-        });
-
-
-      
-
-        
-
-
-        map.addLayer({
-            'id': 'points' + j,
-            'type': 'symbol',
-            'source': 'points' +j,
-            'layout': {
-                'icon-image': 'custom-marker',
-                // get the title name from the source's "title" property
-                'text-field': ['get', 'title'],
-                'text-font': [
-                    'Open Sans Semibold',
-                    'Arial Unicode MS Bold'
-                ],
-                'text-offset': [0, 1.25],
-                'text-anchor': 'top'
-            }
-        });
-        if(i !=99){
-            await sleep(2000);
-            console.log('deneme3')
-            map.removeLayer("points" +j);
-            map.removeSource('points' +j);
+            };
         }
-       
 
-        console.log("deneme2")
 
-}
+    // map.on('load', async () => {
+    //     // Add an image to use as a custom marker
 
-       
-    });
+
+
+    //     console.log('deneme')
+    //     map.addSource('points', {
+    //         'type': 'geojson',
+    //         'data': {
+    //             'type': 'FeatureCollection',
+    //             'features': [
+    //                 {
+    //                     // feature for Mapbox SF
+    //                     'type': 'Feature',
+    //                     'geometry': {
+    //                         'type': 'Point',
+    //                         'coordinates': [-94.86, 29.62]
+    //                     },
+    //                     'properties': {
+    //                         'title': '*'
+    //                     }
+    //                 }
+    //             ]
+    //         }
+    //     });
+
+
+
+
+    //     map.addLayer({
+    //         'id': 'points',
+    //         'type': 'symbol',
+    //         'source': 'points',
+    //         'layout': {
+    //             'icon-image': 'custom-marker',
+    //             // get the title name from the source's "title" property
+    //             'text-field': ['get', 'title'],
+    //             'text-font': [
+    //                 'Open Sans Semibold',
+    //                 'Arial Unicode MS Bold'
+    //             ],
+    //             'text-offset': [0, 1.25],
+    //             'text-anchor': 'top'
+    //         }
+    //     });
+
+
+    //     let latitute = map.getSource('points')._options.data["features"][0]["geometry"]["coordinates"][1]
+    //     let longitude = map.getSource('points')._options.data["features"][0]["geometry"]["coordinates"][0]
+
+    //     async function animateMarker()  {
+    //         await sleep(1000)
+    //         // Update the data to a new position based on the animation timestamp. The
+    //         // divisor in the expression `timestamp / 1000` controls the animation speed.
+    //         map.getSource('points').setData(animate(longitude,latitute));
+            
+    //         // Request the next frame of the animation.
+    //         requestAnimationFrame(animateMarker);
+    //     }
+
+    //     // Start the animation.
+    //     animateMarker();
+
+
+
+
+    //     // if(i !=99){
+    //     //     await sleep(2000);
+    //     //     console.log('deneme3')
+    //     //     map.removeLayer("points" +j);
+    //     //     map.removeSource('points' +j);
+    //     // }
+
+
+    //     console.log("deneme2")
+
+
+
+    // });
 </script>

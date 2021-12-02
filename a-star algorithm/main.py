@@ -1,9 +1,9 @@
 from astar import *
-start, goal = (1, 4), (97, 28)
+start, goal = (1, 4), (3, 4)
 
 
 
-diagram5 = GridWithWeights(500, 500)
+diagram5 = GridWithWeights(10, 10)
 diagram5.walls = [(1, 7), (1, 8), (2, 7), (2, 8), (3, 7), (3, 8)]
 # diagram4.weights = {loc: 5 for loc in [(3, 4), (3, 5), (4, 1), (4, 2),
 #                                        (4, 3), (4, 4), (4, 5), (4, 6),
