@@ -17,42 +17,147 @@
 
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'simulation/index.css' %}">
-
-
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
 
 
 <head>
+
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proj492</title>
-   
+
     <div class="row nav" style="width:1757px">
         <h2>Simulation</h2>
     </div>
+
     <div class="container mainBody">
-        <div class="row map" style="background:blue;width:1757px;height:600px;">
-            <h1>Map</h1>
+        <div class="row map1" id='map' style="width:1757px;height:600px;">
         </div>
-        <div class="row" style  = "display:flex;justify-content: center; width:1757px;height:209px; ">
+        <div class="row" style="display:flex;justify-content: center; width:1757px;height:209px; ">
             <div class="col display">
                 <h2>Display1</h2>
             </div>
             <div class="col display">
                 <h2>Display2</h2>
             </div>
-            <div class="col display" >
+            <div class="col display">
                 <h2>Display3</h2>
             </div>
-            
+
         </div>
-        
+
 
 
     </div>
-    
+
 </head>
+
 <body>
-    
+
 </body>
+
 </html>
+
+
+
+
+<script>
+
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+    mapboxgl.accessToken =
+        'pk.eyJ1Ijoib25kZXJwZWhsaXZhbiIsImEiOiJja3dmY3M4bzUwZGhjMndydXg5MjNtbDczIn0.IUrPfId24D71j_cwM_9PdQ';
+    const map = new mapboxgl.Map({
+
+        container: 'map', // container ID
+        style: 'mapbox://styles/onderpehlivan/ckwp96xek2h2214t5xfyjxcce', // style URL
+        center: [-94.88, 29.62], // starting position [lng, lat]
+        zoom: 9 // starting zoom
+    });
+
+
+
+
+    map.on('load', async () => {
+        // Add an image to use as a custom marker
+
+        for (let i = 0; i < 100; i++) {
+
+            let j  = i/1000
+
+            console.log('deneme')
+        map.addSource('points' + j, {
+            'type': 'geojson',
+            'data': {
+                'type': 'FeatureCollection',
+                'features': [{
+                        // feature for Mapbox DC
+                        'type': 'Feature',
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [
+                                -94.88 + j, 29.62 + j
+                            ]
+                        },
+                        'properties': {
+                            'title': '.'
+                        }
+                    },
+                    {
+                        // feature for Mapbox SF
+                        'type': 'Feature',
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [-94.86 + j, 29.62 +j]
+                        },
+                        'properties': {
+                            'title': '*'
+                        }
+                    }
+                ]
+            }
+        });
+
+
+      
+
+        
+
+
+        map.addLayer({
+            'id': 'points' + j,
+            'type': 'symbol',
+            'source': 'points' +j,
+            'layout': {
+                'icon-image': 'custom-marker',
+                // get the title name from the source's "title" property
+                'text-field': ['get', 'title'],
+                'text-font': [
+                    'Open Sans Semibold',
+                    'Arial Unicode MS Bold'
+                ],
+                'text-offset': [0, 1.25],
+                'text-anchor': 'top'
+            }
+        });
+        if(i !=99){
+            await sleep(2000);
+            console.log('deneme3')
+            map.removeLayer("points" +j);
+            map.removeSource('points' +j);
+        }
+       
+
+        console.log("deneme2")
+
+}
+
+       
+    });
+</script>
