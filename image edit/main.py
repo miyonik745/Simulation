@@ -10,7 +10,7 @@ count = 0
 matrix = []
 red_image = Image.open("map3.png")
 for a in range(1208):
-    print(a)
+    print((a/1208)*100)
     tempList = []
     for b in range(773):
 
@@ -37,14 +37,14 @@ print(sea,land,other, count)
 print(matrix)
 
 
-asd = ""
+tempText = ""
 
 for a in matrix:
-    asd += "\n"
+    tempText += "\n"
     for b in a:
-        asd += str(b)
+        tempText += str(b)
 
-print(asd)
+print(tempText)
 
 with open('readme.txt', 'w') as f:
-    f.write(asd)
+    f.write(tempText) 
