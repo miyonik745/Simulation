@@ -22,10 +22,10 @@ class ImageConverter:
     def createWallMatrix(self):
         wallMatrix = []
         for a in range(self.width):
-            print(int((a/self.width)*100))
+            print(int((a/self.height)*100))
             tempList = []
-            for b in range(self.height):
-                rgb_pixel_value = self.mapImageRGB.getpixel((a,b))
+            for b in range(self.width):
+                rgb_pixel_value = self.mapImageRGB.getpixel((b,a))
 
                 if(str(rgb_pixel_value) == '(214, 216, 221)'):
                     tempList.append("0")
@@ -86,7 +86,7 @@ class ImageConverter:
 
 
 
-imageName =  "map4" + ".png"
+imageName =  "map5" + ".png"
 mapVisualName = "map_data/" + imageName + "_visual.txt"
 mapDataName =  "map_data/" +imageName + "_data.json"
 
