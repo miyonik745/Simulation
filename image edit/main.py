@@ -1,5 +1,6 @@
 from PIL import Image
 from numpy import asarray
+import os
 
 # print(data)
 sea = 0
@@ -7,17 +8,23 @@ land = 0
 other = 0
 count = 0
 
+
+width = 1208
+height = 773
+
+        
 matrix = []
-red_image = Image.open("map3.png")
-for a in range(1208):
-    print((a/1208)*100)
+
+red_image = Image.open("map4.png")
+red_image_rgb = red_image.convert("RGB")
+for a in range(width):
+    print((a/width)*100)
     tempList = []
-    for b in range(773):
+    for b in range(height):
 
 
         count += 1
         
-        red_image_rgb = red_image.convert("RGB")
         rgb_pixel_value = red_image_rgb.getpixel((a,b))
         # print(str(rgb_pixel_value))
 
@@ -25,11 +32,11 @@ for a in range(1208):
 
         if(str(rgb_pixel_value) == '(214, 216, 221)'):
             land+=1
-            tempList.append(0)
+            tempList.append("0")
 
         else:
             sea+=1
-            tempList.append(1)
+            tempList.append("1")
 
     matrix.append(tempList)
 
@@ -39,12 +46,24 @@ print(matrix)
 
 tempText = ""
 
-for a in matrix:
+text2 = "["
+
+for count,a in enumerate(matrix):
     tempText += "\n"
-    for b in a:
+    for count2,b in enumerate(a):
+        if(b == "0"):
+            text2 += f"({count2},{count}),"
         tempText += str(b)
-
+text2 += "]"
 print(tempText)
+print(text2)
 
-with open('readme.txt', 'w') as f:
+os.remove("mapWalls.txt")
+with open('mapWalls.txt', 'w') as f:
     f.write(tempText) 
+
+os.remove("walls.txt")
+with open('walls.txt', 'w') as f:
+    f.write(text2) 
+
+

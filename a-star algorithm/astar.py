@@ -1,3 +1,5 @@
+
+
 # Sample code from https://www.redblobgames.com/pathfinding/a-star/
 # Copyright 2014 Red Blob Games <redblobgames@gmail.com>
 #
@@ -31,6 +33,7 @@ example_graph.edges = {
 }
 
 import collections
+import os
 
 class Queue:
     def __init__(self):
@@ -66,12 +69,20 @@ def draw_tile(graph, id, style):
     return r
 
 def draw_grid(graph, **style):
-    print("___" * graph.width)
+    text = ""
+    # print("___" * graph.width)
     for y in range(graph.height):
         for x in range(graph.width):
-            print("%s" % draw_tile(graph, (x, y), style), end="")
-        print()
-    print("~~~" * graph.width)
+            # print("%s" % draw_tile(graph, (x, y), style), end="")
+            a = "%s" % draw_tile(graph, (x, y), style)
+            text+= a
+        # print()
+        text+= "\n"
+    # print("~~~" * graph.width)
+
+    # os.remove("astarWalls.txt")
+    with open('astarWalls.txt', 'w') as f:
+        f.write(text) 
 
 # data from main article
 DIAGRAM1_WALLS = [from_id_width(id, width=30) for id in [21,22,51,52,81,82,93,94,111,112,123,124,133,134,141,142,153,154,163,164,171,172,173,174,175,183,184,193,194,201,202,203,204,205,213,214,223,224,243,244,253,254,273,274,283,284,303,304,313,314,333,334,343,344,373,374,403,404,433,434]]
