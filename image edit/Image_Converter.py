@@ -19,7 +19,7 @@ matrix = []
 
 
 for a in range(width):
-    print((a/width)*100)
+    print(int((a/width)*100))
     tempList = []
     for b in range(height):
         rgb_pixel_value = mapImageRGB.getpixel((a,b))
@@ -48,10 +48,9 @@ mapDataText += "]"
 # print(mapVisualText)
 # print(mapDataText)
 
-mapVisualName = "mapData/" + imageName + "_visual.txt"
-mapDataName =  "mapData/" +imageName + "_data.txt"
+mapVisualName = "map_data/" + imageName + "_visual.txt"
+mapDataName =  "map_data/" +imageName + "_data.txt"
 
-print(mapVisualName)
 
 
 try:
