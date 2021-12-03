@@ -57,7 +57,7 @@ class ImageConverter:
         data = {
             "walls":self.wallList,
             "width":self.width,
-            "heigh":self.height
+            "height":self.height
         }
 
 

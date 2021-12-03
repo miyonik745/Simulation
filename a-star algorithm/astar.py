@@ -80,8 +80,8 @@ def draw_grid(graph, **style):
         text+= "\n"
     # print("~~~" * graph.width)
 
-    # os.remove("astarWalls.txt")
-    with open('astarWalls.txt', 'w') as f:
+    os.remove("astar_visual.txt")
+    with open('astar_visual.txt', 'w') as f:
         f.write(text) 
 
 # data from main article
