@@ -5,12 +5,13 @@ import json
 from math import sqrt
 
 
-
-
+dirname = os.path.dirname(__file__)
 
 class ImageConverter:
     def __init__(self,imageName) :
-        self.imagePath = "map_images/" + imageName
+
+        self.imagePath = os.path.join(dirname, f'map_images\\{imageName}')
+        print(self.imagePath)
         self.mapImage = Image.open(self.imagePath)
         self.width, self.height= self.mapImage.size
         self.mapImageRGB = self.mapImage.convert("RGB")
@@ -86,13 +87,12 @@ class ImageConverter:
 
 
 
+imageName = "map5"
+imageExtensionName =  imageName + ".png"
+mapVisualName = os.path.join(dirname, f'map_data\\{imageName}_visual.txt')
+mapDataName =  os.path.join(dirname, f'map_data\\{imageName}_data.json')
 
-
-imageName =  "map5" + ".png"
-mapVisualName = "map_data/" + imageName + "_visual.txt"
-mapDataName =  "map_data/" +imageName + "_data.json"
-
-imageConverter = ImageConverter(imageName)
+imageConverter = ImageConverter(imageExtensionName)
 imageConverter.createJsonFile(mapDataName)
 imageConverter.createVisualTextFile(mapVisualName)
 
