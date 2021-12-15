@@ -2,6 +2,8 @@ from PIL import Image
 from numpy import asarray
 import os
 import json
+from math import sqrt
+
 
 
 
@@ -27,11 +29,11 @@ class ImageConverter:
             for b in range(self.width):
                 rgb_pixel_value = self.mapImageRGB.getpixel((b,a))
 
-                if(str(rgb_pixel_value) == '(214, 216, 221)'):
-                    tempList.append("0")
+                if(str(rgb_pixel_value) != '(214, 216, 221)'):
+                    tempList.append("1")
 
                 else:
-                    tempList.append("1")
+                    tempList.append("0")
             wallMatrix.append(tempList)
 
         self.generateImageData(wallMatrix)
@@ -44,7 +46,7 @@ class ImageConverter:
         for count,a in enumerate(matrix):
             mapVisualText += "\n"
             for count2,b in enumerate(a):
-                if(b == "0"):
+                if(b == "1"):
                     wallList.append([count2,count])
                 mapVisualText += str(b)
         
