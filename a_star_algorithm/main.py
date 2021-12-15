@@ -8,12 +8,12 @@ start = time.time()
 
 
 
-f = open('map4.png_data.json')
+f = open('map5.png_data.json')
 data = json.load(f)
 
 walls,width,height = data.values()
 diagram5 = GridWithWeights(width, height)
-start, goal = (15, 113), (735, 819)
+start, goal = (4, 57), (295, 280)
 diagram5.walls = []
 
 
@@ -32,4 +32,3 @@ draw_grid(diagram5, path=reconstruct_path(came_from, start=start, goal=goal))
 
 
 end = time.time()
-print(end - start)
