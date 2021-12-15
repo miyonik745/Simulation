@@ -79,8 +79,10 @@ def draw_grid(graph, **style):
         # print()
         text+= "\n"
     # print("~~~" * graph.width)
-
-    os.remove("astar_visual.txt")
+    try:
+        os.remove("astar_visual.txt")
+    except:
+        pass
     with open('astar_visual.txt', 'w') as f:
         f.write(text) 
 
