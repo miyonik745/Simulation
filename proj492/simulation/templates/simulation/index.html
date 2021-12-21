@@ -101,42 +101,199 @@
     map.on('load', () => {
         // // Add an image to use as a custom marker
         // console.log('deneme')
-        // map.addSource('points', {
-        //     'type': 'geojson',
-        //     'data': {
-        //         'type': 'FeatureCollection',
-        //         'features': [
-        //             {
-        //                 // feature for Mapbox SF
-        //                 'type': 'Feature',
-        //                 'geometry': {
-        //                     'type': 'Point',
-        //                     'coordinates': [-94.86, 29.62]
-        //                 },
-        //                 'properties': {
-        //                     'title': '*'
-        //                 }
-        //             }
-        //         ]
-        //     }
-        // });
+        map.addSource('topLeft', {
+            'type': 'geojson',
+            'data': {
+                'type': 'FeatureCollection',
+                'features': [
+                    {
+                        // feature for Mapbox SF
+                        'type': 'Feature',
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [-95.03742458020967, 29.791522914005327]
+                        },
+                        'properties': {
+                            'title': '*'
+                        }
+                    }
+                ]
+            }
+        });
 
-        // map.addLayer({
-        //     'id': 'points',
-        //     'type': 'symbol',
-        //     'source': 'points',
-        //     'layout': {
-        //         'icon-image': 'custom-marker',
-        //         // get the title name from the source's "title" property
-        //         'text-field': ['get', 'title'],
-        //         'text-font': [
-        //             'Open Sans Semibold',
-        //             'Arial Unicode MS Bold'
-        //         ],
-        //         'text-offset': [0, 1.25],
-        //         'text-anchor': 'top'
-        //     }
-        // });
+        map.addLayer({
+            'id': 'topLeft',
+            'type': 'symbol',
+            'source': 'topLeft',
+            'layout': {
+                'icon-image': 'custom-marker',
+                // get the title name from the source's "title" property
+                'text-field': ['get', 'title'],
+                'text-font': [
+                    'Open Sans Semibold',
+                    'Arial Unicode MS Bold'
+                ],
+                'text-offset': [0, 1.25],
+                'text-anchor': 'top'
+            }
+        });
+
+
+        map.addSource('topRight', {
+            'type': 'geojson',
+            'data': {
+                'type': 'FeatureCollection',
+                'features': [
+                    {
+                        // feature for Mapbox SF
+                        'type': 'Feature',
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [-94.54906280996236, 29.812568632913027]
+                        },
+                        'properties': {
+                            'title': '*'
+                        }
+                    }
+                ]
+            }
+        });
+
+        map.addLayer({
+            'id': 'topRight',
+            'type': 'symbol',
+            'source': 'topRight',
+            'layout': {
+                'icon-image': 'custom-marker',
+                // get the title name from the source's "title" property
+                'text-field': ['get', 'title'],
+                'text-font': [
+                    'Open Sans Semibold',
+                    'Arial Unicode MS Bold'
+                ],
+                'text-offset': [0, 1.25],
+                'text-anchor': 'top'
+            }
+        });
+
+
+        map.addSource('bottomLeft', {
+            'type': 'geojson',
+            'data': {
+                'type': 'FeatureCollection',
+                'features': [
+                    {
+                        // feature for Mapbox SF
+                        'type': 'Feature',
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [-95.03756305694266, 29.379566938728473]
+                        },
+                        'properties': {
+                            'title': '*'
+                        }
+                    }
+                ]
+            }
+        });
+
+        map.addLayer({
+            'id': 'bottomLeft',
+            'type': 'symbol',
+            'source': 'bottomLeft',
+            'layout': {
+                'icon-image': 'custom-marker',
+                // get the title name from the source's "title" property
+                'text-field': ['get', 'title'],
+                'text-font': [
+                    'Open Sans Semibold',
+                    'Arial Unicode MS Bold'
+                ],
+                'text-offset': [0, 1.25],
+                'text-anchor': 'top'
+            }
+        });
+
+
+
+        map.addSource('bottomRight', {
+            'type': 'geojson',
+            'data': {
+                'type': 'FeatureCollection',
+                'features': [
+                    {
+                        // feature for Mapbox SF
+                        'type': 'Feature',
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [-94.53806131039909, 29.397919986593962]
+                        },
+                        'properties': {
+                            'title': '*'
+                        }
+                    }
+                ]
+            }
+        });
+
+        map.addLayer({
+            'id': 'bottomRight',
+            'type': 'symbol',
+            'source': 'bottomRight',
+            'layout': {
+                'icon-image': 'custom-marker',
+                // get the title name from the source's "title" property
+                'text-field': ['get', 'title'],
+                'text-font': [
+                    'Open Sans Semibold',
+                    'Arial Unicode MS Bold'
+                ],
+                'text-offset': [0, 1.25],
+                'text-anchor': 'top'
+            }
+        });
+
+
+        map.addSource('test', {
+            'type': 'geojson',
+            'data': {
+                'type': 'FeatureCollection',
+                'features': [
+                    {
+                        // feature for Mapbox SF
+                        'type': 'Feature',
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': [-95.03749367982192,29.397919986593962]
+                        },
+                        'properties': {
+                            'title': '--'
+                        }
+                    }
+                ]
+            }
+        });
+
+        map.addLayer({
+            'id': 'test',
+            'type': 'symbol',
+            'source': 'test',
+            'layout': {
+                'icon-image': 'custom-marker',
+                'text-field': ['get', 'title'],
+                'text-font': [
+                    'Open Sans Semibold',
+                    'Arial Unicode MS Bold'
+                ],
+                'text-offset': [0, 1.25],
+                'text-anchor': 'top'
+            }
+        });
+
+
+
+
+        
 
 
         // let latitute = map.getSource('points')._options.data["features"][0]["geometry"]["coordinates"][1]

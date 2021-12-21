@@ -35,6 +35,8 @@ example_graph.edges = {
 import collections
 import os
 
+dirname = os.path.dirname(__file__)
+
 class Queue:
     def __init__(self):
         self.elements = collections.deque()
@@ -80,10 +82,11 @@ def draw_grid(graph, **style):
         text+= "\n"
     # print("~~~" * graph.width)
     try:
-        os.remove("astar_visual.txt")
+       
+        os.remove(os.path.join(dirname, "astar_visual.txt"))
     except:
         pass
-    with open('astar_visual.txt', 'w') as f:
+    with open(os.path.join(dirname, "astar_visual.txt"), 'w') as f:
         f.write(text) 
 
 # data from main article

@@ -47,7 +47,7 @@ class ImageConverter:
         for count,a in enumerate(matrix):
             mapVisualText += "\n"
             for count2,b in enumerate(a):
-                if(b == "1"):
+                if(b == "0"):
                     wallList.append([count2,count])
                 mapVisualText += str(b)
         

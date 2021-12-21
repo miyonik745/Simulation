@@ -6,14 +6,19 @@ import time
 
 start = time.time()
 
+dirname = os.path.dirname(__file__)
+
+dataFileName = 'map5_data.json'
+dataFilePath = os.path.join(dirname, dataFileName)
 
 
-f = open('map5.png_data.json')
+
+f = open(dataFilePath)
 data = json.load(f)
 
 walls,width,height = data.values()
 diagram5 = GridWithWeights(width, height)
-start, goal = (4, 57), (295, 280)
+start, goal = (190, 240), (236, 417)
 diagram5.walls = []
 
 
@@ -26,9 +31,10 @@ for a in walls :
 
 
 came_from, cost_so_far = a_star_search(diagram5, start, goal)
-print(reconstruct_path(came_from, start=start, goal=goal))
 draw_grid(diagram5, point_to=came_from, start=start, goal=goal)
-draw_grid(diagram5, path=reconstruct_path(came_from, start=start, goal=goal))
+path = reconstruct_path(came_from, start=start, goal=goal)
+draw_grid(diagram5, path=path)
+print(path)
 
 
 end = time.time()
