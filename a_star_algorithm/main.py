@@ -3,12 +3,9 @@ import json
 import time
 
 
-
-start = time.time()
-
 dirname = os.path.dirname(__file__)
 
-dataFileName = 'map5_data.json'
+dataFileName = 'map6_data.json'
 dataFilePath = os.path.join(dirname, dataFileName)
 
 
@@ -18,7 +15,7 @@ data = json.load(f)
 
 walls,width,height = data.values()
 diagram5 = GridWithWeights(width, height)
-start, goal = (190, 240), (236, 417)
+start, goal = (199, 7), (61, 146)
 diagram5.walls = []
 
 
@@ -37,4 +34,21 @@ draw_grid(diagram5, path=path)
 print(path)
 
 
-end = time.time()
+
+tempDict = {
+    "path": path
+}
+
+# for a in path:
+#     text += f"({a[0]},{a[1]}),"
+
+
+        
+
+with open(os.path.join(dirname, "astar_path.json"), 'w') as f:
+        json.dump(tempDict, f)
+
+# with open(os.path.join(dirname, "astar_path.txt"), 'w') as f:
+#         f.write(text) 
+
+

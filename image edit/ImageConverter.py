@@ -24,7 +24,7 @@ class ImageConverter:
 
     def createWallMatrix(self):
         wallMatrix = []
-        for a in range(self.width):
+        for a in range(self.height):
             print(int((a/self.height)*100))
             tempList = []
             for b in range(self.width):
@@ -87,7 +87,7 @@ class ImageConverter:
 
 
 
-imageName = "map5"
+imageName = "map6"
 imageExtensionName =  imageName + ".png"
 mapVisualName = os.path.join(dirname, f'map_data\\{imageName}_visual.txt')
 mapDataName =  os.path.join(dirname, f'map_data\\{imageName}_data.json')
