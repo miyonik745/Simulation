@@ -15,7 +15,7 @@ data = json.load(f)
 
 walls,width,height = data.values()
 diagram5 = GridWithWeights(width, height)
-start, goal = (199, 7), (61, 146)
+start, goal = (62, 106), (163, 57)
 diagram5.walls = []
 
 
@@ -31,7 +31,7 @@ came_from, cost_so_far = a_star_search(diagram5, start, goal)
 draw_grid(diagram5, point_to=came_from, start=start, goal=goal)
 path = reconstruct_path(came_from, start=start, goal=goal)
 draw_grid(diagram5, path=path)
-print(path)
+print(len(path))
 
 
 

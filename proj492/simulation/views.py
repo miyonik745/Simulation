@@ -15,7 +15,6 @@ def index(request):
     return render(request, "simulation/index.html", context)
 
 def createPath(request):
-    print("baslangic")
     dirname = os.path.dirname(__file__)
 
     start = request.POST.get('start','')
@@ -82,12 +81,12 @@ def createPath(request):
 
         tempList.append(tempList2)
 
-        currentLat = startLat
-        currentLong = startLong
+        currentLat = referenceLat
+        currentLong = referenceLong
 
 
  
  
 
     print("son")
-    return HttpResponse(JsonResponse({"path":tempList}))
+    return HttpResponse(JsonResponse({"path":tempList,"pixelPath":path}))
